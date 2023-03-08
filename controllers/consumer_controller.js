@@ -16,7 +16,7 @@ router.post('/createProfile', function(request, response){
   let grade = request.body.grade;
 
   if(name && grade){
-    Consumer.createConsumer(name, grade);
+    Consumer.createProfile(name, grade);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("views/consumer/profile");
@@ -100,7 +100,7 @@ router.post('/orderMonday', function(request, response){
   let wednesdayDessert = request.body.wednesdayDessert;
 
   if(wednesdayMeal && wednesdaySide1 && wednesdaySide2 && wednesdayDessert){
-    Consumer.orderwednesday(wednesdayMeal, wednesdaySide1, wednesdaySide2, wednesdayDessert);
+    Consumer.orderWednesday(wednesdayMeal, wednesdaySide1, wednesdaySide2, wednesdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("views/consumer/orderingpage");
@@ -118,7 +118,7 @@ router.post('/orderMonday', function(request, response){
   let thursdayDessert = request.body.thursdayDessert;
 
   if(thursdayMeal && thursdaySide1 && thursdaySide2 && thursdayDessert){
-    Consumer.orderthursday(thursdayMeal, thursdaySide1, thursdaySide2, thursdayDessert);
+    Consumer.orderThursday(thursdayMeal, thursdaySide1, thursdaySide2, thursdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("views/consumer/orderingpage");
@@ -136,7 +136,7 @@ router.post('/orderMonday', function(request, response){
   let fridayDessert = request.body.fridayDessert;
 
   if(fridayMeal && fridaySide1 && fridaySide2 && fridayDessert){
-    Consumer.orderfriday(fridayMeal, fridaySide1, fridaySide2, fridayDessert);
+    Consumer.orderFriday(fridayMeal, fridaySide1, fridaySide2, fridayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("views/consumer/orderingpage");
