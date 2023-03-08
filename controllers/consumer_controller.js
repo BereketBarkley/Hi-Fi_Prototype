@@ -3,6 +3,30 @@ const express = require('express'),
 
 const Consumer = require('../models/consumer_model');
 
+router.get('/createProfile', function(request, response) {
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("views/consumer/createProfile");
+});
+
+
+router.post('/createProfile', function(request, response){
+
+  let name = request.body.name;
+  let grade = request.body.grade;
+
+  if(name && grade){
+    Consumer.createConsumer(name, grade);
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.redirect("views/consumer/profile");
+  }
+
+  else{
+    response.redirect('/error?code=400');
+  }
+});
+
 router.get('/profile', function(request, response) {
   let orderHistory = Consumer.getOrderHistory();
   let favoriteMeals = Consumer.getFavoriteMeals();
