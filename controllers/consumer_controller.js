@@ -49,7 +49,7 @@ router.get('/order', function(request, response){
 
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("views/consumer/orderingpage",{
+  response.render("views/consumer/orderingPage",{
     dietaryRestrictions: dietaryRestrictions,
     personalDetails: personalDetails
   });
@@ -67,7 +67,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderMonday(mondayMeal, mondaySide1, mondaySide2, mondayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingpage");
+    response.redirect("views/consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -85,7 +85,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderTuesday(tuesdayMeal, tuesdaySide1, tuesdaySide2, tuesdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingpage");
+    response.redirect("views/consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -103,7 +103,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderWednesday(wednesdayMeal, wednesdaySide1, wednesdaySide2, wednesdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingpage");
+    response.redirect("views/consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -121,7 +121,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderThursday(thursdayMeal, thursdaySide1, thursdaySide2, thursdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingpage");
+    response.redirect("views/consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -139,10 +139,12 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderFriday(fridayMeal, fridaySide1, fridaySide2, fridayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingpage");
+    response.redirect("views/consumer/orderingPage");
   }
 
   else{
     response.redirect('/error?code=400');
   }
 });
+
+module.exports = router;

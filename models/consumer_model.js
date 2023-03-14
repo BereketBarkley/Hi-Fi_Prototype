@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+
 exports.getPersonalDetails = function(){
 /*
   let opponents = JSON.parse(fs.readFileSync(__dirname+'/../data/opponents.json'));
