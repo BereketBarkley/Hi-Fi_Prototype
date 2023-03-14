@@ -1,1 +1,1 @@
-"{name:{grade:9, dietaryRestrictions:[], top3Meals:[], top3Sides:[]}"
+"{name:{grade:9, dietaryRestrictions:[], top3Meals:[], top3Sides:[], orderHistory:{[meal,side1,side2,dessert], [meal,side1,side2,dessert], [meal,side1,side2,dessert]}}"
