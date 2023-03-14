@@ -17,10 +17,6 @@ app.use(require('./controllers/consumer_controller'));
 app.use(require('./controllers/admin_controller'));
 app.use(require('./controllers/staff_controller'));
 
-app.use(require('./models/admin_model'));
-app.use(require('./models/consumer_model'));
-app.use(require('./models/staff_model'));
-
 app.use("", function(request, response) {
   response.redirect('/error?code=400');
 });
