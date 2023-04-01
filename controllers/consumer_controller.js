@@ -10,6 +10,13 @@ router.get('/createProfile', function(request, response) {
 });
 
 
+router.get('/orderingPage', function(request, response) {
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("consumer/orderingPage");
+});
+
+
 router.post('/createProfile', function(request, response){
 
   let name = request.body.name;
