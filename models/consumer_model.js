@@ -1,7 +1,19 @@
 //const uuid = require('uuid');
 const fs = require('fs');
 
-exports.createProfile = function(){
+exports.createProfile = function(name, grade){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+
+  let newConsumer = {
+    "grade": grade,
+    "dietaryRestrictions":[],
+    "top3Meals":[],
+    "top3Sides":[],
+    "orderHistory":{}
+  }
+
+  users[name] = newConsumer;
+    fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(users));
 
 }
 

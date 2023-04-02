@@ -6,7 +6,7 @@ const Consumer = require('../models/consumer_model');
 router.get('/createProfile', function(request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("views/consumer/createProfile");
+    response.render("consumer/createProfile");
 });
 
 
@@ -23,16 +23,12 @@ router.post('/createProfile', function(request, response){
   let name = request.body.name;
   let grade = request.body.grade;
 
-  if(name && grade){
-    Consumer.createProfile(name, grade);
-    response.status(200);
+  Consumer.createProfile(name, grade);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/profile");
-  }
+    response.redirect('/adminPage');
 
-  else{
-    response.redirect('/error?code=400');
-  }
+
+
 });
 
 router.get('/profile', function(request, response) {
@@ -43,7 +39,7 @@ router.get('/profile', function(request, response) {
 
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("views/consumer/profile",{
+  response.render("consumer/createProfile",{
     orderHistory: orderHistory,
     favoriteMeals: favoriteMeals,
     dietaryRestrictions: dietaryRestrictions,
@@ -57,7 +53,7 @@ router.get('/order', function(request, response){
 
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("views/consumer/orderingPage",{
+  response.render("consumer/orderingPage",{
     dietaryRestrictions: dietaryRestrictions,
     personalDetails: personalDetails
   });
@@ -75,7 +71,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderMonday(mondayMeal, mondaySide1, mondaySide2, mondayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingPage");
+    response.redirect("consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
