@@ -1,0 +1,28 @@
+<%- include('../partials/header', {title:"Order Fulfillment"}) -%>
+
+<h1>Welcome, Admin</h1>
+
+<h2>Navigation</h2>
+<a href="/consumerStats"><button>View Historicals</button></a>
+<a href="/dayBreakdown"><button>View This Week's Breakdown</button></a>
+
+<br>
+
+<h2>Actionables</h2>
+<h4>Set Menu</h4>
+<form action="/setMenu" method="POST">
+  <label for="name">Day:</label>
+  <input type="text" id="day" name="day" value=""><br>
+  <label for="name">Hot Meal:</label>
+  <input type="text" id="mealName" name="mealName" value=""><br>
+  <label for="name">First Side Dish:</label>
+  <input type="text" id="side1" name="side1" value=""><br>
+  <label for="name">Second Side Dish:</label>
+  <input type="text" id="side2" name="side2" value=""><br>
+  <label for="name">Dessert:</label>
+  <input type="text" id="dessert" name="dessert" value=""><br>
+
+  <br><br>
+  <input type="submit" value="Submit">
+
+</form>

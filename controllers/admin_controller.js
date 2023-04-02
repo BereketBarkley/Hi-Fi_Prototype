@@ -46,13 +46,14 @@ router.post('/refreshWeek', function(request, response){
     response.redirect('/adminPage');
 });
 
-router.post('/postMenu', function(request, response){
+router.post('/setMenu', function(request, response){
 
-    let mealName = request.query.mealName;
-    let side1 = request.query.side1;
-    let side2 = request.query.side2;
-    let dessert = request.query.dessert;
-    Admin.setMenu();
+    let day = request.body.day;
+    let mealName = request.body.mealName;
+    let side1 = request.body.side1;
+    let side2 = request.body.side2;
+    let dessert = request.body.dessert;
+    Admin.setMenu(day, mealName,side1,side2,dessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect('/adminPage');

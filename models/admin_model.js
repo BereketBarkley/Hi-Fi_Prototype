@@ -87,10 +87,23 @@ exports.getFridayStats = function(){
 }
 
 exports.refreshWeek = function(){
+  let weekOrders = JSON.parse(fs.readFileSync(__dirname+'/../data/weekOrders.json'));
 
+  let clearedWO={}
+  fs.writeFileSync(__dirname+'/../data/weekOrders.json', JSON.stringify(clearedWO));
 }
 
 
-exports.setMenu = function(){
+exports.setMenu = function(day, mealName,side1,side2,dessert){
+  let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));
+  let newMenu={
+    "day": day,
+    "meal": mealName,
+    "side1": side1,
+    "side2": side2,
+    "dessert": dessert,
+
+  }
+    fs.writeFileSync(__dirname+'/../data/menu.json', JSON.stringify(newMenu));
 
 }

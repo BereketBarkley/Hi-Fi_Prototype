@@ -93,7 +93,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderTuesday(tuesdayMeal, tuesdaySide1, tuesdaySide2, tuesdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingPage");
+    response.redirect("consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -111,7 +111,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderWednesday(wednesdayMeal, wednesdaySide1, wednesdaySide2, wednesdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingPage");
+    response.redirect("consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -129,7 +129,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderThursday(thursdayMeal, thursdaySide1, thursdaySide2, thursdayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingPage");
+    response.redirect("consumer/orderingPage");
   }
   else{
     response.redirect('/error?code=400');
@@ -147,7 +147,7 @@ router.post('/orderMonday', function(request, response){
     Consumer.orderFriday(fridayMeal, fridaySide1, fridaySide2, fridayDessert);
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("views/consumer/orderingPage");
+    response.redirect("consumer/orderingPage");
   }
 
   else{
