@@ -1,5 +1,17 @@
+//const uuid = require('uuid');
 const fs = require('fs');
 
+exports.createProfile = function(){
+
+}
+
+exports.getFavoriteMeals = function(){
+
+}
+
+exports.getDietaryRestrictions = function(){
+
+}
 
 exports.getPersonalDetails = function(){
 /*
@@ -8,18 +20,23 @@ exports.getPersonalDetails = function(){
   */
 }
 
-exports.getDietaryRestrictions = function(){
 
-}
-exports.getPersonalDetails = function(){
-
-}
-exports.getFavoriteMeals = function(){
-
-}
 exports.orderMonday = function(){
 
 }
+
 exports.orderTuesday = function(){
+
+}
+
+exports.orderWednesday = function(){
+
+}
+
+exports.orderThursday = function(){
+
+}
+
+exports.orderFriday = function(){
 
 }

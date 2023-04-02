@@ -1,0 +1,51 @@
+<%- include('../partials/header', {title:"Order Fulfillment"}) -%>
+
+<h1>Today's Breakdown</h1>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td>Quantity of <%=menu.meal%> Orders:</td>
+    <td><%=mealsOrdered%></td>
+  </tr>
+  <tr>
+    <td>Quantity of <%=menu.side1%> Orders:</td>
+    <td><%=side1Ordered%></td>
+  </tr>
+  <tr>
+    <td>Quantity of <%=menu.side2%> Orders:</td>
+    <td><%=side2Ordered%></td>
+  </tr>
+  <tr>
+    <td>Quantity of <%=menu.dessert%> Orders:</td>
+    <td><%=dessertOrdered%></td>
+  </tr>
+
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <th>Order Name</th>
+    <th>Hot Meal</th>
+    <th>Side 1</th>
+    <th>Side 2</th>
+    <th>Dessert</th>
+
+  </tr>
+  <%for(user in orderList){%>
+
+
+  <tr>
+    <td><%=user%></td>
+    <td><%=orderList[user][menu.day].meal%></td>
+    <td><%=orderList[user][menu.day].side1%></td>
+    <td><%=orderList[user][menu.day].side2%></td>
+    <td><%=orderList[user][menu.day].dessert%></td>
+  </tr>
+
+    <%}%>
+</table>
