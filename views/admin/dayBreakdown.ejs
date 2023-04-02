@@ -1,0 +1,130 @@
+<%- include('../partials/header', {title:"Order Fulfillment"}) -%>
+
+<%
+let mealcount = 0;
+let side1count = 0;
+let side2count = 0;
+let dessertcount = 0;
+let mealcount1 = 0;
+let side1count1 = 0;
+let side2count1 = 0;
+let dessertcount1 = 0;
+let mealcount2 = 0;
+let side1count2 = 0;
+let side2count2 = 0;
+let dessertcount2 = 0;
+let mealcount3 = 0;
+let side1count3 = 0;
+let side2count3 = 0;
+let dessertcount3 = 0;
+let mealcount4 = 0;
+let side1count4 = 0;
+let side2count4 = 0;
+let dessertcount4 = 0;
+for(consumer in monday){
+    if(monday[consumer].meal != "n/a"){
+      mealcount += 1;
+    }
+    if(monday[consumer].side1 != "n/a"){
+      side1count += 1;
+    }
+    if(monday[consumer].side2 != "n/a"){
+      side2count += 1;
+    }
+    if(monday[consumer].dessert != "n/a"){
+      dessertcount += 1;
+    }
+}
+
+
+for(consumer in tuesday){
+    if(tuesday[consumer].meal != "n/a"){
+      mealcount1 += 1;
+    }
+    if(tuesday[consumer].side1 != "n/a"){
+      side1count1 += 1;
+    }
+    if(tuesday[consumer].side2 != "n/a"){
+      side2count1 += 1;
+    }
+    if(tuesday[consumer].dessert != "n/a"){
+      dessertcount1 += 1;
+    }
+}
+
+for(consumer in wednesday){
+    if(wednesday[consumer].meal != "n/a"){
+      mealcount2 += 1;
+    }
+    if(wednesday[consumer].side1 != "n/a"){
+      side1count2 += 1;
+    }
+    if(wednesday[consumer].side2 != "n/a"){
+      side2count2 += 1;
+    }
+    if(wednesday[consumer].dessert != "n/a"){
+      dessertcount2 += 1;
+    }
+}
+
+for(consumer in thursday){
+    if(thursday[consumer].meal != "n/a"){
+      mealcount3 += 1;
+    }
+    if(thursday[consumer].side1 != "n/a"){
+      side1count3 += 1;
+    }
+    if(thursday[consumer].side2 != "n/a"){
+      side2count3 += 1;
+    }
+    if(thursday[consumer].dessert != "n/a"){
+      dessertcount3 += 1;
+    }
+}
+
+for(consumer in friday){
+    if(friday[consumer].meal != "n/a"){
+      mealcount4 += 1;
+    }
+    if(friday[consumer].side1 != "n/a"){
+      side1count4 += 1;
+    }
+    if(friday[consumer].side2 != "n/a"){
+      side2count4 += 1;
+    }
+    if(friday[consumer].dessert != "n/a"){
+      dessertcount4 += 1;
+    }
+}
+%>
+<h1>Monday</h1>
+<h5># of Hot Meal Orders: <%=mealcount%></h5>
+<h5># of Primary Side Orders: <%=side1count%></h5>
+<h5># of Secondary Side Orders: <%=side2count%></h5>
+<h5># of Dessert Orders: <%=dessertcount%></h5>
+
+
+<h1>Tuesday</h1>
+<h5># of Hot Meal Orders: <%=mealcount1%></h5>
+<h5># of Primary Side Orders: <%=side1count1%></h5>
+<h5># of Secondary Side Orders: <%=side2count1%></h5>
+<h5># of Dessert Orders: <%=dessertcount1%></h5>
+
+<h1>Wednesday</h1>
+<h5># of Hot Meal Orders: <%=mealcount2%></h5>
+<h5># of Primary Side Orders: <%=side1count2%></h5>
+<h5># of Secondary Side Orders: <%=side2count2%></h5>
+<h5># of Dessert Orders: <%=dessertcount2%></h5>
+
+<h1>Thursday</h1>
+<h5># of Hot Meal Orders: <%=mealcount3%></h5>
+<h5># of Primary Side Orders: <%=side1count3%></h5>
+<h5># of Secondary Side Orders: <%=side2count3%></h5>
+<h5># of Dessert Orders: <%=dessertcount3%></h5>
+
+
+<h1>Friday</h1>
+<h5># of Hot Meal Orders: <%=mealcount4%></h5>
+<h5># of Primary Side Orders: <%=side1count4%></h5>
+<h5># of Secondary Side Orders: <%=side2count4%></h5>
+<h5># of Dessert Orders: <%=dessertcount4%></h5>

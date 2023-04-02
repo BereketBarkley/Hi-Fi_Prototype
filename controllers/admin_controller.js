@@ -5,12 +5,12 @@ const Admin = require('../models/admin_model');
 
 router.get('/consumerStats', function(request, response) {
     let topMeals = Admin.getTopMeals();
-    let worstMeals = Admin.getWorstMeals();
+    let rank = Admin.getMealRankings();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("admin/consumerStats",{
       topMeals: topMeals,
-      worstMeals: worstMeals
+      rank:rank
     });
 });
 

@@ -1,5 +1,7 @@
 <%- include('../partials/header', {title:"Order Fulfillment"}) -%>
 
+
+
 <h1>Most Popular Dishes</h1>
 <table>
   <tr>
@@ -8,8 +10,31 @@
   </tr>
 
   <tr>
-    <td><%=JSON.stringify(topMeals)%></td>
-    <td></td>
+    <td><%=topMeals["first"]%></td>
+    <td><%=rank[topMeals["first"]]%></td>
   </tr>
+  <tr>
+    <td><%=topMeals["second"]%></td>
+    <td><%=rank[topMeals["second"]]%></td>
+  </tr>
+  <tr>
+    <td><%=topMeals["third"]%></td>
+    <td><%=rank[topMeals["third"]]%></td>
+  </tr>
+
+</table>
+
+<h1>Statistics for All Dishes</h1>
+<table>
+  <tr>
+    <th>Dish Name</th>
+    <th>Orders / Times Served</th>
+  </tr>
+  <%for(meal in rank){%>
+  <tr>
+    <td><%=meal%></td>
+    <td><%=rank[meal]%></td>
+  </tr>
+  <%}%>
 
 </table>
