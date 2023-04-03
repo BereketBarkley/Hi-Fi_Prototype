@@ -1,7 +1,6 @@
 //..............Include Express..................................//
 const express = require('express');
 const ejs = require('ejs');
-
 //..............Create an Express server object..................//
 const app = express();
 
