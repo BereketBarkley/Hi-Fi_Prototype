@@ -17,6 +17,12 @@ exports.createProfile = function(name, grade){
 
 }
 
+exports.getMenu = function(){
+  let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));
+  return menu;
+}
+
+
 exports.getFavoriteMeals = function(){
 
 }
@@ -32,23 +38,17 @@ exports.getPersonalDetails = function(){
   */
 }
 
-
-exports.orderMonday = function(){
-
-}
-
-exports.orderTuesday = function(){
+exports.updateUserHistory = function(){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
 
 }
 
-exports.orderWednesday = function(){
+exports.order = function(order){
+  let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));
+  let newMenu={
+    "a":order
 
-}
-
-exports.orderThursday = function(){
-
-}
-
-exports.orderFriday = function(){
+  }
+    fs.writeFileSync(__dirname+'/../data/s.json', JSON.stringify(newMenu));
 
 }

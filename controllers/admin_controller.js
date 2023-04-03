@@ -43,7 +43,7 @@ router.post('/refreshWeek', function(request, response){
     Admin.refreshWeek();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect('/adminPage');
+    response.redirect('/dayBreakdown');
 });
 
 router.post('/setMenu', function(request, response){

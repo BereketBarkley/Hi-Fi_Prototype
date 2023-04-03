@@ -11,9 +11,13 @@ router.get('/createProfile', function(request, response) {
 
 
 router.get('/orderingPage', function(request, response) {
+    let menu = Consumer.getMenu();
+
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("consumer/orderingPage");
+    response.render("consumer/orderingPage",{
+      menu:menu
+    });
 });
 
 
@@ -61,20 +65,47 @@ router.get('/order', function(request, response){
 
 router.post('/orderMonday', function(request, response){
 
+  let menu = Consumer.getMenu();
+  let day = request.body.day;
+  let inyn = request.body.in;
+  let outyn = request.body.out;
+  let order = [];
 
-  let mondayMeal = request.body.mondayMeal;
-  let mondaySide1 = request.body.mondaySide1;
-  let mondaySide2 = request.body.mondaySide2;
-  let mondayDessert = request.body.mondayDessert;
+  if(outyn != "on"){
+    let meal = request.body.mealyn;
+    let side1 = request.body.side1yn;
+    let side2 = request.body.side2yn;
+    let dessert = request.body.dessert;
 
-  if(mondayMeal && mondaySide1 && mondaySide2 && mondayDessert){
-    Consumer.orderMonday(mondayMeal, mondaySide1, mondaySide2, mondayDessert);
+    let mealsel = "n/a";
+    let side1sel = "n/a";
+    let side2sel = "n/a";
+    let dessertsel = "n/a";
+
+    if(meal == "on"){
+      melsel = menu["meal"];
+    }
+    if(side1 == "on"){
+      side1sel = menu["side1"];
+    }
+    if(side2 == "on"){
+      side2sel = menu["side2"];
+    }
+    if(dessert == "on"){
+      dessertsel = menu["dessert"];
+    }
+
+    order.push(melsel);
+    order.push(side1sel);
+    order.push(side2sel);
+    order.push(dessertsel);
+    Consumer.updateMealStats(order);
+    //need to have login to save to a specific name in users and meal orders
+    Consumer.updateUserHistory();
+    Consumer.updateWeekOrders();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("consumer/orderingPage");
-  }
-  else{
-    response.redirect('/error?code=400');
   }
 });
 
