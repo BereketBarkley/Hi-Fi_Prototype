@@ -11,18 +11,19 @@ function loggedIn(request, response, next) {
   }
 }
 
-router.get('/consumerStats', function(request, response) {
+router.get('/consumerStats', loggedIn, function(request, response) {
     let topMeals = Admin.getTopMeals();
     let rank = Admin.getMealRankings();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("admin/consumerStats",{
+      user: request.user,
       topMeals: topMeals,
       rank:rank
     });
 });
 
-router.get('/dayBreakdown', function(request, response) {
+router.get('/dayBreakdown', loggedIn, function(request, response) {
 
     let monday = Admin.getMondayStats();
     let tuesday = Admin.getTuesdayStats();
@@ -32,6 +33,7 @@ router.get('/dayBreakdown', function(request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("admin/dayBreakdown",{
+      user: request.user,
       monday: monday,
       tuesday:tuesday,
       wednesday:wednesday,
@@ -40,11 +42,13 @@ router.get('/dayBreakdown', function(request, response) {
     });
 });
 
-router.get('/adminPage', function(request, response) {
+router.get('/adminPage', loggedIn, function(request, response) {
 
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("admin/adminPage");
+    response.render("admin/adminPage",{
+      user: request.user,
+    });
 });
 
 router.post('/refreshWeek', function(request, response){
@@ -54,7 +58,7 @@ router.post('/refreshWeek', function(request, response){
     response.redirect('/dayBreakdown');
 });
 
-router.post('/setMenu', function(request, response){
+router.post('/setMenu', loggedIn, function(request, response){
 
     let day = request.body.day;
     let mealName = request.body.mealName;

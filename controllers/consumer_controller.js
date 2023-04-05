@@ -11,19 +11,23 @@ function loggedIn(request, response, next) {
   }
 }
 
+
 router.get('/createProfile', function(request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("consumer/createProfile");
+    response.render("consumer/createProfile",{
+      user: request.user,
+  });
 });
 
 
-router.get('/orderingPage', function(request, response) {
+router.get('/orderingPage', loggedIn, function(request, response) {
     let menu = Consumer.getMenu();
 
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("consumer/orderingPage",{
+      user: request.user,
       menu:menu
     });
 });
@@ -43,7 +47,7 @@ router.post('/createProfile', function(request, response){
 
 });
 
-router.get('/profile', function(request, response) {
+router.get('/profile', loggedIn, function(request, response) {
   let orderHistory = Consumer.getOrderHistory();
   let favoriteMeals = Consumer.getFavoriteMeals();
   let dietaryRestrictions = Consumer.getDietaryRestrictions();
@@ -52,6 +56,7 @@ router.get('/profile', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("consumer/createProfile",{
+    user: request.user,
     orderHistory: orderHistory,
     favoriteMeals: favoriteMeals,
     dietaryRestrictions: dietaryRestrictions,
@@ -59,19 +64,8 @@ router.get('/profile', function(request, response) {
   });
 });
 
-router.get('/order', function(request, response){
-  let dietaryRestrictions = Consumer.getDietaryRestrictions();
-  let personalDetails = Consumer.getPersonalDetails();
 
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render("consumer/orderingPage",{
-    dietaryRestrictions: dietaryRestrictions,
-    personalDetails: personalDetails
-  });
-});
-
-router.post('/orderMonday', function(request, response){
+router.post('/order', loggedIn, function(request, response){
 
   let menu = Consumer.getMenu();
   let day = request.body.day;
@@ -114,79 +108,6 @@ router.post('/orderMonday', function(request, response){
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("consumer/orderingPage");
-  }
-});
-
-  router.post('/orderTuesday', function(request, response){
-
-  let tuesdayMeal = request.body.tuesdayMeal;
-  let tuesdaySide1 = request.body.tuesdaySide1;
-  let tuesdaySide2 = request.body.tuesdaySide2;
-  let tuesdayDessert = request.body.tuesdayDessert;
-
-  if(tuesdayMeal && tuesdaySide1 && tuesdaySide2 && tuesdayDessert){
-    Consumer.orderTuesday(tuesdayMeal, tuesdaySide1, tuesdaySide2, tuesdayDessert);
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.redirect("consumer/orderingPage");
-  }
-  else{
-    response.redirect('/error?code=400');
-  }
-});
-
-  router.post('/orderWednesday', function(request, response){
-
-  let wednesdayMeal = request.body.wednesdayMeal;
-  let wednesdaySide1 = request.body.wednesdaySide1;
-  let wednesdaySide2 = request.body.wednesdaySide2;
-  let wednesdayDessert = request.body.wednesdayDessert;
-
-  if(wednesdayMeal && wednesdaySide1 && wednesdaySide2 && wednesdayDessert){
-    Consumer.orderWednesday(wednesdayMeal, wednesdaySide1, wednesdaySide2, wednesdayDessert);
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.redirect("consumer/orderingPage");
-  }
-  else{
-    response.redirect('/error?code=400');
-  }
-});
-
-  router.post('/orderThursday', function(request, response){
-
-  let thursdayMeal = request.body.thursdayMeal;
-  let thursdaySide1 = request.body.thursdaySide1;
-  let thursdaySide2 = request.body.thursdaySide2;
-  let thursdayDessert = request.body.thursdayDessert;
-
-  if(thursdayMeal && thursdaySide1 && thursdaySide2 && thursdayDessert){
-    Consumer.orderThursday(thursdayMeal, thursdaySide1, thursdaySide2, thursdayDessert);
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.redirect("consumer/orderingPage");
-  }
-  else{
-    response.redirect('/error?code=400');
-  }
-});
-
-  router.post('/orderFrday', function(request, response){
-
-  let fridayMeal = request.body.fridayMeal;
-  let fridaySide1 = request.body.fridaySide1;
-  let fridaySide2 = request.body.fridaySide2;
-  let fridayDessert = request.body.fridayDessert;
-
-  if(fridayMeal && fridaySide1 && fridaySide2 && fridayDessert){
-    Consumer.orderFriday(fridayMeal, fridaySide1, fridaySide2, fridayDessert);
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.redirect("consumer/orderingPage");
-  }
-
-  else{
-    response.redirect('/error?code=400');
   }
 });
 

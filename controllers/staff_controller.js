@@ -11,7 +11,7 @@ function loggedIn(request, response, next) {
   }
 }
 
-router.get('/orderFulfillment', function(request, response) {
+router.get('/orderFulfillment', loggedIn, function(request, response) {
     let menu = Staff.getMenu();
     let mealsOrdered = Staff.countMeals();
     let side1Ordered = Staff.countSide1();
@@ -22,6 +22,7 @@ router.get('/orderFulfillment', function(request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("staff/orderFulfillment",{
+      user: request.user,
       menu: menu,
       mealsOrdered: mealsOrdered,
       side1Ordered: side1Ordered,

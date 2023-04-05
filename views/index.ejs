@@ -31,9 +31,13 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-<p> Welcome to the official site of the Paper, Rock, Scissors: Tournament of Champions!
+<p> Welcome to Lunch Line</p>
   <br>
   <br>
-  <a href="/play">Click to play a round of Paper, Rock, Scissors</a>
+  <% if(user){ %>
+  <a href="/dayBreakdown">Profile</a>
+  <% }else{ %>
+  <a href="/login">Click to login</a>
+  <% }%>
 
   <%- include('partials/footer') -%>
