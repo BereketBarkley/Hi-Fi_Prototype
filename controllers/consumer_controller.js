@@ -3,6 +3,14 @@ const express = require('express'),
 
 const Consumer = require('../models/consumer_model');
 
+function loggedIn(request, response, next) {
+  if (request.user) {
+    next();
+  } else {
+    response.redirect('/login');
+  }
+}
+
 router.get('/createProfile', function(request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')

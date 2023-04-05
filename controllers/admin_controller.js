@@ -3,6 +3,14 @@ const express = require('express'),
 
 const Admin = require('../models/admin_model');
 
+function loggedIn(request, response, next) {
+  if (request.user) {
+    next();
+  } else {
+    response.redirect('/login');
+  }
+}
+
 router.get('/consumerStats', function(request, response) {
     let topMeals = Admin.getTopMeals();
     let rank = Admin.getMealRankings();

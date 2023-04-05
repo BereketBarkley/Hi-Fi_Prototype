@@ -3,6 +3,14 @@ const express = require('express'),
 
 const Staff = require('../models/staff_model');
 
+function loggedIn(request, response, next) {
+  if (request.user) {
+    next();
+  } else {
+    response.redirect('/login');
+  }
+}
+
 router.get('/orderFulfillment', function(request, response) {
     let menu = Staff.getMenu();
     let mealsOrdered = Staff.countMeals();
