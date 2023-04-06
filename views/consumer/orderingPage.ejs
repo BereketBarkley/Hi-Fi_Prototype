@@ -1,4 +1,4 @@
-<%- include('../partials/header', {title:"Order", user:user}) -%>
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -38,7 +38,7 @@
 <table>
 
   <tr>
-    <td> In: <input type="checkbox" id= "in" name = "in"> </td>
+    <td> In: <%=JSON.stringify(user)%><input type="checkbox" id= "in" name = "in"> </td>
     <td> Out: <input type="checkbox" id= "out" name = "out"></td>
   </tr>
   <tr>
