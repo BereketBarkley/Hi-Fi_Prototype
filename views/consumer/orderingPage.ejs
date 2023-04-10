@@ -31,6 +31,7 @@
   ======================================================== -->
 </head>
 <body>
+  <p>Logged in as <%=user._json.email%></p>
 <h1>Order:</h1>
 
 <form action="/order" method="POST">
@@ -38,7 +39,7 @@
 <table>
 
   <tr>
-    <td> In: <%=JSON.stringify(user)%><input type="checkbox" id= "in" name = "in"> </td>
+    <td> In:<input type="checkbox" id= "in" name = "in"> </td>
     <td> Out: <input type="checkbox" id= "out" name = "out"></td>
   </tr>
   <tr>
@@ -46,7 +47,15 @@
     <td> <%=menu["side1"]%>: <input type="checkbox" id= "side1yn" name = "side1yn"></td>
     <td> <%=menu["side2"]%>: <input type="checkbox" id= "side2yn" name = "side2yn"></td>
     <td> <%=menu["dessert"]%>: <input type="checkbox" id= "dessertyn" name = "dessertyn"></td>
+
+
   </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><input value= "<%=user._json.email%>" id= "useremail" name = "useremail"><%=user._json.email%></td>
+    </tr>
   </table>
   <input type="submit" value="Finalize Order">
 

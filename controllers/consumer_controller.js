@@ -71,13 +71,15 @@ router.post('/order', loggedIn, function(request, response){
   let day = request.body.day;
   let inyn = request.body.in;
   let outyn = request.body.out;
+  let user = request.body.useremail;
   let order = [];
 
   if(outyn != "on"){
     let meal = request.body.mealyn;
     let side1 = request.body.side1yn;
     let side2 = request.body.side2yn;
-    let dessert = request.body.dessert;
+    let dessert = request.body.dessertyn;
+
 
     let mealsel = "n/a";
     let side1sel = "n/a";
@@ -85,7 +87,7 @@ router.post('/order', loggedIn, function(request, response){
     let dessertsel = "n/a";
 
     if(meal == "on"){
-      melsel = menu["meal"];
+      mealsel = menu["meal"];
     }
     if(side1 == "on"){
       side1sel = menu["side1"];
@@ -97,14 +99,18 @@ router.post('/order', loggedIn, function(request, response){
       dessertsel = menu["dessert"];
     }
 
-    order.push(melsel);
+    order.push(mealsel);
     order.push(side1sel);
     order.push(side2sel);
     order.push(dessertsel);
-    Consumer.updateMealStats(order);
+    //Consumer.updateMealStats(order);
     //need to have login to save to a specific name in users and meal orders
-    Consumer.updateUserHistory();
-    Consumer.updateWeekOrders();
+
+
+    Consumer.updateWeekOrders(order,user, day);
+
+    Consumer.updateUserHistory(order,user);
+    //Consumer.updateTopMeals();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.redirect("consumer/orderingPage");
