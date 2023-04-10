@@ -96,6 +96,12 @@ exports.getPersonalDetails = function(){
   */
 }
 
+exports.getMealStats = function(){
+  let stats = JSON.parse(fs.readFileSync(__dirname+'/../data/mealStats.json'));
+  return stats;
+}
+
+
 exports.updateUserHistory = function(order, user){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
 
@@ -122,6 +128,19 @@ exports.updateTopMeals = function(){
 
 }
 
+exports.updateMealStats = function(order){
+  let stats = JSON.parse(fs.readFileSync(__dirname+'/../data/mealStats.json'));
+
+  for(let i = 0; i < 4; i++){
+    for(meal in stats){
+      if(meal == order[i]){
+        stats[meal]["numOrdered"] += 1;
+      }
+    }
+  }
+
+    fs.writeFileSync(__dirname+'/../data/mealStats.json', JSON.stringify(stats));
+}
 
 exports.order = function(order){
   let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));

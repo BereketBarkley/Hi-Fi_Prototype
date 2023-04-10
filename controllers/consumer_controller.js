@@ -12,11 +12,14 @@ function loggedIn(request, response, next) {
 }
 
 
-router.get('/createProfile', function(request, response) {
+router.get('/addtoProfile', function(request, response) {
+
+    let stats = Consumer.getMealStats();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("consumer/createProfile",{
+    response.render("consumer/addtoProfile",{
       user: request.user,
+      stats: stats
   });
 });
 
@@ -34,12 +37,19 @@ router.get('/orderingPage', loggedIn, function(request, response) {
 
 
 
-router.post('/createProfile', function(request, response){
+router.post('/addtoProfile', function(request, response){
 
-  let name = request.body.name;
+  let r1= request.body.r1;
+  let r2= request.body.r2;
+  let r3= request.body.r3;
   let grade = request.body.grade;
 
-  Consumer.createProfile(name, grade);
+  let stats = Consumer.getMealStats();
+  for(meal in stats){
+    if(meal = re)
+  }
+
+  Consumer.addtoProfile(name, grade);
     response.setHeader('Content-Type', 'text/html')
     response.redirect('/adminPage');
 
@@ -110,6 +120,7 @@ router.post('/order', loggedIn, function(request, response){
     Consumer.updateWeekOrders(order,user, day);
 
     Consumer.updateUserHistory(order,user);
+    Consumer.updateMealStats(order);
     //Consumer.updateTopMeals();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
