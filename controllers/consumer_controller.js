@@ -63,19 +63,20 @@ router.post('/addtoProfile', loggedIn, function(request, response){
 });
 
 router.get('/profile', loggedIn, function(request, response) {
-  let orderHistory = Consumer.getOrderHistory();
-  let favoriteMeals = Consumer.getFavoriteMeals();
-  let dietaryRestrictions = Consumer.getDietaryRestrictions();
-  let personalDetails = Consumer.getPersonalDetails();
+  let user = request.user._json.email;
+  let orderHistory = Consumer.getOrderHistory(user);
+  let grade = Consumer.getGrade(user);
+  let dietaryRestrictions = Consumer.getDietaryRestrictions(user);
+  let top3Meals = Consumer.getTop3Meals(user);
 
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("consumer/createProfile",{
+  response.render("consumer/profile",{
     user: request.user,
+    grade: grade,
     orderHistory: orderHistory,
-    favoriteMeals: favoriteMeals,
     dietaryRestrictions: dietaryRestrictions,
-    personalDetails: personalDetails
+    top3Meals: top3Meals
   });
 });
 

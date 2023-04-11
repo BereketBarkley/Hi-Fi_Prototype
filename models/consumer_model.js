@@ -23,9 +23,6 @@ exports.getMenu = function(){
 }
 
 
-exports.getFavoriteMeals = function(){
-
-}
 
 exports.updateDietaryRestrictions = function(r1,r2,r3,user){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
@@ -181,12 +178,47 @@ exports.updateMealStats = function(order){
     fs.writeFileSync(__dirname+'/../data/mealStats.json', JSON.stringify(stats));
 }
 
-exports.order = function(order){
-  let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));
-  let newMenu={
-    "a":order
 
+
+exports.getOrderHistory = function(user){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+
+  for(useri in users){
+
+    if(useri == user){
+      return users[useri]["orderHistory"];
+    }
   }
-    fs.writeFileSync(__dirname+'/../data/s.json', JSON.stringify(newMenu));
 
+}
+exports.getGrade = function(user){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+
+  for(useri in users){
+
+    if(useri == user){
+      return users[useri]["grade"];
+    }
+  }
+
+}
+exports.getDietaryRestrictions = function(user){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+
+  for(useri in users){
+
+    if(useri == user){
+      return users[useri]["dietaryRestrictions"];
+    }
+  }
+}
+exports.getTop3Meals = function(user){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+
+  for(useri in users){
+
+    if(useri == user){
+      return users[useri]["top3Meals"];
+    }
+  }
 }
