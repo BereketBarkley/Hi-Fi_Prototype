@@ -21,7 +21,7 @@
   <br>
   <br>
 
-  <h4>Dietary Restrictions</h4>
+  <h4>Dietary Restrictions<%=JSON.stringify(user)%></h4>
 
   <label for="name">~ </label>
   <input type="text" id="r1" name="r1" value = ""><br>
@@ -34,13 +34,38 @@
     <br>
     <br>
 
-  <h4>Select Your Top 3 Favorite Meals</h4>
-    <%for(meal in stats){%>
-    <label for="name"><%=meal%></label>
-    <input type="checkbox" id="<%=meal%>" name="<%=meal%>" value ="<%=meal%>" ><br>
+  <h4>Select Your Top 3 Favorite Dishes</h4>
+  <label for="dish1">Choose an Dish 1:</label>
+    <select id="dish1" name="dish1">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
 
-    <%}%>
+  <br>
+  <br>
+  <br>
+  <label for="dish2">Choose an Dish 2:</label>
+    <select id="dish2" name="dish2">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
 
+  <br>
+  <br>
+  <br>
+  <label for="dish3">Choose an Dish 3:</label>
+    <select id="dish3" name="dish3">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
+
+  <br>
+  <br>
+  <br>
+  <td><input value= "<%=user._json.email%>" id= "useremail" name = "useremail"><%=user._json.email%></td>
   <input type="submit" value="Add New Info">
 
 </form>

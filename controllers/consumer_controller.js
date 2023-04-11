@@ -12,7 +12,7 @@ function loggedIn(request, response, next) {
 }
 
 
-router.get('/addtoProfile', function(request, response) {
+router.get('/addtoProfile', loggedIn, function(request, response) {
 
     let stats = Consumer.getMealStats();
     response.status(200);
@@ -37,19 +37,24 @@ router.get('/orderingPage', loggedIn, function(request, response) {
 
 
 
-router.post('/addtoProfile', function(request, response){
+router.post('/addtoProfile', loggedIn, function(request, response){
+
+  let user = request.body.useremail;
 
   let r1= request.body.r1;
   let r2= request.body.r2;
   let r3= request.body.r3;
   let grade = request.body.grade;
 
-  let stats = Consumer.getMealStats();
-  for(meal in stats){
-    if(meal = re)
-  }
+  let d1 = request.body.dish1;
+  let d2 = request.body.dish2;
+  let d3 = request.body.dish3;
 
-  Consumer.addtoProfile(name, grade);
+  Consumer.updateTopMeals(d1,d2,d3,user);
+  Consumer.updateDietaryRestrictions(r1,r2,r3, user);
+  Consumer.updateGrade(grade, user);
+
+  //Consumer.addtoProfile(user, r1,r2,r3,grade,d1,d2,d3);
     response.setHeader('Content-Type', 'text/html')
     response.redirect('/adminPage');
 
