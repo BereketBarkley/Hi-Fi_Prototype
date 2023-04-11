@@ -10,18 +10,30 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/#">Home</a>
               </li>
-<li class="nav-item">
+              <%if(user){%>
+              <% if(user._json.email == "emmett.chen23@trinityschoolnyc.org"){%>
+                <li class="nav-item">
+                  <a class="nav-link" href="/adminPage">Admin Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/consumerStats">Historicals</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dayBreakdown">This Week</a>
+                </li>
+                <%}%>
+                <%if(user._json.email != "emmett.chen23@trinityschoolnyc.org"){%>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/orderingPage">Order</a>
+                  </li>
+                  <%}}%>
+
+              <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-              </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="/orderingPage">Order</a>
-                </li>
-
-
                   <li class="nav-item">
                     <a class="nav-link" href="/#">Log Out</a>
                   </li>
