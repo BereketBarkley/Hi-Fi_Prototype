@@ -174,6 +174,7 @@ exports.updateMealStats = function(order){
       }
     }
   }
+  
 
     fs.writeFileSync(__dirname+'/../data/mealStats.json', JSON.stringify(stats));
 }

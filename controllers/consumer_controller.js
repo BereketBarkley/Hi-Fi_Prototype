@@ -130,7 +130,7 @@ router.post('/order', loggedIn, function(request, response){
     //Consumer.updateTopMeals();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect("consumer/orderingPage");
+    response.redirect("/orderingPage");
   }
 });
 

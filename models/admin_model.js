@@ -96,6 +96,49 @@ exports.refreshWeek = function(){
 
 exports.setMenu = function(day, mealName,side1,side2,dessert){
   let menu = JSON.parse(fs.readFileSync(__dirname+'/../data/menu.json'));
+  let stats = JSON.parse(fs.readFileSync(__dirname+'/../data/mealStats.json'));
+  let exists = false;
+  for(meal in stats){
+    if(mealName == meal){
+      exists = true;
+    }
+  }
+  if(exists == false){
+    stats[mealName] = {"numServed":1,"numOrdered":1}
+  }
+  exists = false;
+
+  for(meal in stats){
+    if(side1 == meal){
+      exists = true;
+    }
+  }
+  if(exists == false){
+    stats[side1] = {"numServed":1,"numOrdered":1}
+  }
+  exists = false;
+
+  for(meal in stats){
+    if(side2 == meal){
+      exists = true;
+    }
+  }
+  if(exists == false){
+    stats[side2] = {"numServed":1,"numOrdered":1}
+  }
+  exists = false;
+
+  for(meal in stats){
+    if(dessert == meal){
+      exists = true;
+    }
+  }
+  if(exists == false){
+    stats[dessert] = {"numServed":1,"numOrdered":1}
+  }
+  exists = false;
+
+
   let newMenu={
     "day": day,
     "meal": mealName,
@@ -105,5 +148,6 @@ exports.setMenu = function(day, mealName,side1,side2,dessert){
 
   }
     fs.writeFileSync(__dirname+'/../data/menu.json', JSON.stringify(newMenu));
+    fs.writeFileSync(__dirname+'/../data/mealStats.json', JSON.stringify(stats));
 
 }
