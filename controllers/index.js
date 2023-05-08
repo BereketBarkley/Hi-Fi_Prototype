@@ -1,10 +1,17 @@
 const express = require('express'),
   router = express.Router();
 
+
 router.get('/', function(request, response) {
+  console.log(request.user); //Passport adds user to the Request object if loggedIn
+  //console.log(request.user._json.email); //Passport adds user to the Request object if loggedIn
+  console.log(request.headers); //Encrypted session info is sent as a request header
+
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("index");
+  response.render("index", {
+    user: request.user
+  });
 });
 
 router.get('/login', function(request, response) {
@@ -14,7 +21,6 @@ router.get('/login', function(request, response) {
     user: request.user
   });
 });
-
 
 router.get('/error', function(request, response) {
   const errorCode = request.query.code;
@@ -29,13 +35,10 @@ router.get('/error', function(request, response) {
   response.status(errorCode);
   response.setHeader('Content-Type', 'text/html')
   response.render("error", {
+    user: request.user,
     "errorCode": errorCode,
     "details": errors[errorCode]
   });
 });
-
-
-
-
 
 module.exports = router

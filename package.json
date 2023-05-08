@@ -10,12 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "boostrap": "^2.0.0",
     "bootstrap": "^5.2.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "modules": "^0.4.0",
     "node": "^19.8.1",
     "sqlite3": "^5.1.6",
+=======
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+>>>>>>> 63b7fb8ee954ae2a025f326d01a2e486faee6ee8
     "uuid": "^8.3.2"
   }
 }

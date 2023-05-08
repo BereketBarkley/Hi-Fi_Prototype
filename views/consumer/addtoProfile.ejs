@@ -1,0 +1,64 @@
+<%- include('../partials/header', {title:"addtoProfile", user:user}) -%>
+<br>
+<h2>Add Information To Your Profile</h2>
+
+
+<form action="/addtoProfile" method="POST">
+  <br>
+  <h4>Grade</h4>
+
+  <label for="name">~ </label>
+  <input type="text" id="grade" name="grade" value = "">
+
+  <br>
+  <br>
+  <br>
+
+  <h4>Dietary Restrictions</h4>
+
+  <label for="name">~ </label>
+  <input type="text" id="r1" name="r1" value = ""><br>
+  <label for="name">~ </label>
+  <input type="text" id="r2" name="r2" value = ""><br>
+  <label for="name">~ </label>
+  <input type="text" id="r3" name="r3" value = ""><br>
+
+    <br>
+    <br>
+    <br>
+
+  <h4>Select Your Top 3 Favorite Dishes</h4>
+  <label for="dish1">Choose an Dish 1:</label>
+    <select id="dish1" name="dish1">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
+
+  <br>
+  <br>
+  <br>
+  <label for="dish2">Choose an Dish 2:</label>
+    <select id="dish2" name="dish2">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
+
+  <br>
+  <br>
+  <br>
+  <label for="dish3">Choose an Dish 3:</label>
+    <select id="dish3" name="dish3">
+      <%for(meal in stats){%>
+          <option value="<%=meal%>"><%=meal%></option>
+      <%}%>
+    </select>
+
+  <br>
+  <br>
+  <br>
+  <td><input value= "<%=user._json.email%>" id= "useremail" name = "useremail"><%=user._json.email%></td>
+  <input type="submit" value="Add New Info">
+
+</form>
