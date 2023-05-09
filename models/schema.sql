@@ -1,8 +1,11 @@
-DROP TABLE IF EXISTS trades;
+DROP TABLE IF EXISTS log;
 
-CREATE TABLE trades (
+CREATE TABLE log (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  owner TEXT,
-  created_at DATE DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATE DEFAULT CURRENT_TIMESTAMP
+  userID TEXT,
+  activity TEXT,
+  created_at DATE DEFAULT CURRENT_TIMESTAMP
 );
+
+
+menu - user , decide based on what i have for the trable

@@ -1,6 +1,10 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('example.db');
 
+- make function for the differenet stats - user activity,
+- make function for get unique users - display counts and or what funcitnosn to make
+- views,get requests, 
+
 db.serialize(() => {
   db.run("PRAGMA foreign_keys = ON;"); //enables foreign keys in sqlite3
 
