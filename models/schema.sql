@@ -6,6 +6,3 @@ CREATE TABLE log (
   activity TEXT,
   created_at DATE DEFAULT CURRENT_TIMESTAMP
 );
-
-
-menu - user , decide based on what i have for the trable
