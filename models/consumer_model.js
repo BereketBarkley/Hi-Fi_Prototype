@@ -22,8 +22,6 @@ exports.getMenu = function(){
   return menu;
 }
 
-
-
 exports.updateDietaryRestrictions = function(r1,r2,r3,user){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
 
@@ -174,7 +172,7 @@ exports.updateMealStats = function(order){
       }
     }
   }
-  
+
 
     fs.writeFileSync(__dirname+'/../data/mealStats.json', JSON.stringify(stats));
 }
