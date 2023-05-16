@@ -11,7 +11,7 @@
                 <a class="nav-link" href="/#">Home</a>
               </li>
               <%if(user){%>
-              <% if(user._json.email != "emmett.chen23@trinityschoolnyc.org"){%>
+              <% if(user._json.email == "bereket.barkley23@trinityschoolnyc.org"){%>
                 <li class="nav-item">
                   <a class="nav-link" href="/adminPage">Admin Page</a>
                 </li>
@@ -22,7 +22,7 @@
                   <a class="nav-link" href="/dayBreakdown">This Week</a>
                 </li>
                 <%}%>
-                <%if(user._json.email == "emmett.chen23@trinityschoolnyc.org"){%>
+                <%if(user._json.email == "bereket.barkley@trinityschoolnyc.org"){%>
                   <li class="nav-item">
                     <a class="nav-link" href="/profile">Profile</a>
                   </li>

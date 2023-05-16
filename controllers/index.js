@@ -1,6 +1,6 @@
 const express = require('express'),
   router = express.Router();
-
+const db = require('../models/log_model')
 
 router.get('/', function(request, response) {
   console.log(request.user); //Passport adds user to the Request object if loggedIn
