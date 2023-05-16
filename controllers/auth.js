@@ -62,7 +62,7 @@ router.get('/auth/google/callback',
     let a = request.user._json.email;
     console.log("a");
     let b = a.split("");
-    if(a == "justin.godhe@trinityschoolnyc.org"){
+    if(a == "justin.godhe@trinityschoolnyc.org"|| a == "bereket.barkley@gmail.com"){
       response.redirect('/adminPage');
     }
     for(let i = 0; i< b.length; i++){
