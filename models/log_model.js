@@ -12,11 +12,11 @@ db.serialize(() => {
       }else{
         console.log(row)
       }
-    }
+    });
   }
 
   exports.getOrders = function(){
-    db.all('SELECT * FROM log where activity = orders  ', function(err, row){
+    db.all('SELECT * FROM log where activity = orders', function(err, row){
       if(err){
         console.log(err)
       }else{

@@ -25,11 +25,16 @@
   <br><br>
   <input type="submit" value="Submit">
 
-</form>
+  <input type="button" id = "notifyButton" value="Notify">
 
+</form>
+<script type="text/javascript">
+  document.getElementById("notifyButton").addEventListener(function(){
+    //socket immt so grab each piece of the form and conncet to the scoket to notify the consumers
+  });
+</script>
 <h4>Start a New Week (Reset Meal Selection Data)</h4>
 <form action="/refreshWeek" method="POST">
-
   <input type="submit" value="Refresh">
 
 </form>

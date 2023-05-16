@@ -3,22 +3,23 @@ const socketapi = {
     io: io
 };
 
-io.on('connection', function(socket){
-  
-    socket.on('announcement', function(data) {
-      console.log('announcement:', data);
-      io.emit('announcement', {
+io.on('setMenu', function(socket){
+
+    socket.on('newMenu', function(data) {
+      console.log('New Menu has been set:', data);
+
+      io.emit('newMenu', {
         userFirstName: data.userFirstName,
         message: data.message
       });
     });
 
-    socket.on('connectionEvent', function(data) {
-      console.log('connection:', data.userFirstName);
-      io.emit('connectionEvent', {
+    socket.on('setMenu', function(data) {
+      console.log('newMenu:', data.userFirstName);
+      io.emit('setMenu', {
           userFirstName:data.userFirstName,
           numClients: io.engine.clientsCount,
-          message: 'connected'
+          message: 'View Menu'
       });
     });
 

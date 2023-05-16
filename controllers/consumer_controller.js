@@ -36,7 +36,7 @@ router.get('/orderingPage', loggedIn, function(request, response) {
 });
 
 
-
+//
 router.post('/addtoProfile', loggedIn, function(request, response){
 
   let user = request.body.useremail;

@@ -7,12 +7,12 @@ db.serialize(() => {
 
   db.run('SELECT * FROM log where activity = login', function(err, row){
     if(err) {
-      throw err; 
+      throw err;
     }
     }
 
 
-    db.all('SELECT * FROM log where activity = orders  ', function(err, row){
+    db.all('SELECT * FROM log where activity = orders', function(err, row){//add a callback
       if(err){
         console.log(err)
       }else{
@@ -21,14 +21,12 @@ db.serialize(() => {
         });
 
 
-    db.all('SELECT * FROM log where activity = updateMenu', function (order, user){
+    db.all('SELECT * FROM log where activity = updateMenu', function (order, user){//add a callback
       if(user){
         console.log(order)
       }else{
         console.log(err)
       }
         });
-
-
 });
 db.close();

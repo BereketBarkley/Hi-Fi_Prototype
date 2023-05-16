@@ -17,17 +17,23 @@
 <h5>Grade: <p><%=grade%></p></h5>
 <br>
 <h5>Dietary Restrictions</h5>
-<ul>
-  <li><%=dietaryRestrictions[0]%></li>
-    <li><%=dietaryRestrictions[1]%></li>
-      <li><%=dietaryRestrictions[2]%></li>
-</ul>
+<% if (dietaryRestrictions){%>
+  <ul>
+    <li><%=dietaryRestrictions[0]%></li>
+      <li><%=dietaryRestrictions[1]%></li>
+        <li><%=dietaryRestrictions[2]%></li>
+  </ul>
+<%}%>
+
+<% if (top3Meals){%>
+
 <h5>Top 3 Meals</h5>
 <ul>
   <li><%=top3Meals[0]%></li>
     <li><%=top3Meals[1]%></li>
       <li><%=top3Meals[2]%></li>
 </ul>
+<%}%>
 <br>
 <h3>Order History</h3>
 <ul>

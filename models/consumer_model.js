@@ -210,6 +210,8 @@ exports.getDietaryRestrictions = function(user){
       return users[useri]["dietaryRestrictions"];
     }
   }
+
+  
 }
 exports.getTop3Meals = function(user){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
