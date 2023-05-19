@@ -56,7 +56,7 @@ router.post('/addtoProfile', loggedIn, function(request, response){
 
   //Consumer.addtoProfile(user, r1,r2,r3,grade,d1,d2,d3);
     response.setHeader('Content-Type', 'text/html')
-    response.redirect('/adminPage');
+    response.redirect('/profile');
 
 
 
