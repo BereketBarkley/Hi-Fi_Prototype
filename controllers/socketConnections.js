@@ -3,25 +3,24 @@ const socketapi = {
     io: io
 };
 
-io.on('setMenu', function(socket){
 
-    socket.on('newMenu', function(data) {
-      console.log('New Menu has been set:', data);
-
-      io.emit('newMenu', {
-        userFirstName: data.userFirstName,
-        message: data.message
-      });
+io.on('connection', function (socket) {
+  console.log("socket connected")
+  socket.on('announcement', function (data) {
+    console.log("New Menu Uploaded")
+    console.log(data);
+    io.emit('announcement', {
+      data: data
     });
+  });
 
-    socket.on('setMenu', function(data) {
-      console.log('newMenu:', data.userFirstName);
-      io.emit('setMenu', {
-          userFirstName:data.userFirstName,
-          numClients: io.engine.clientsCount,
-          message: 'View Menu'
-      });
+  socket.on('connectionEvent', function (data) {
+    console.log('connection:', data.userFirstName);
+    io.emit('connectionEvent', {
+      userFirstName: data.userFirstName,
+      message: 'Menu Added'
     });
+  });
 
 });
 

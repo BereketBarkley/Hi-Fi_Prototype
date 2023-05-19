@@ -1,10 +1,13 @@
 <%- include('../partials/header', {title:"Order Fulfillment", user:user}) -%>
+<%- include('../partials/notification', {title:"notification", user:user}) -%>
+
 <br>
 <h1>Welcome, Admin</h1>
 
 <h2>Navigation</h2>
 <a href="/consumerStats"><button>View Historicals</button></a>
 <a href="/dayBreakdown"><button>View This Week's Breakdown</button></a>
+  <script src="/socket.io/socket.io.js" ></script>
 
 <br>
 
@@ -29,9 +32,12 @@
 
 </form>
 <script type="text/javascript">
-  document.getElementById("notifyButton").addEventListener(function(){
-    //socket immt so grab each piece of the form and conncet to the scoket to notify the consumers
-  });
+  document.getElementById("notifyButton").addEventListener('click', function () {
+    let socket = io.connect('/');
+    let announcement = "";
+    socket.emit('announcement', announcement);
+
+});
 </script>
 <h4>Start a New Week (Reset Meal Selection Data)</h4>
 <form action="/refreshWeek" method="POST">
